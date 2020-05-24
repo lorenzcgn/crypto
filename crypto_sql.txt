@@ -1,0 +1,28 @@
+create database crypto;
+use crypto;
+
+
+create table purposes(
+  purpose varchar(40) not null,
+  description varchar(80) NOT NULL,
+  CONSTRAINT chiave_primaria PRIMARY KEY (purpose)
+);
+
+create table walletts(
+  portfoliocode varchar(20) not null,
+  purpose varchar(40) not null,
+  descrizione varchar(200),
+  btc decimal,
+  euro decimal,
+  ethereum decimal,
+  bitcoincash decimal,
+  xrp decimal,
+  litecoin decimal,
+  dash decimal,
+  CONSTRAINT chiave_primaria PRIMARY KEY (portfoliocode),
+  CONSTRAINT chiave_esterna foreign key (purpose) references purposes(purpose)
+);
+
+
+insert into purposes(purpose, description) values ("vacanze", "risparmi per le vacanze"), ("salute", "trattamenti salute"), ("investimenti", "risparmi per futuri investimenti"), ("abbigliamento", "risparmi per abiti e scarpe"),("elettronica", "risparmi per dispotivi e software"),("shopping", "risparmi per spese di shopping"), ("intrattenimento", "risparmi per cinema, musica, dvd, cd"), ("casa", "casa, mobili e decorazioni"), ("regali", "risparmi per futuri regali"); 
+insert into walletts(portfoliocode, purpose, descrizione, btc, euro, ethereum, bitcoincash, xrp, litecoin, dash) values ("A01", "vacanze", "Portofolio per vacanze 2021", "1.2", "600","0","0","0","0","0"), ("A02", "vacanze", "Portofolio con Bitcoin e ethereum per vacanze 2022", "2", "1000", "3","0","0","0","0"), ("A03", "investimenti", "Portofolio di BTC, ethereum e dash per investimento p2p lending", "0.2", "1000", "3","0","0","0","2"),("A04", "intrattenimento", "cinema", "0.01", "10", "3","0","5","0","2"), ("B01", "casa", "spesa per il nuovo armadio", "7.47", "349", "0","65","12","0","22");
